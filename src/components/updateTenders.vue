@@ -58,13 +58,13 @@
                       >
                         <template v-slot:activator="{ on }">
                           <v-text-field
-                            v-model="startDate"
+                            v-model="startDate_Et"
                             label="Start Date"
                             readonly
                             v-on="on"
                           ></v-text-field>
                         </template>
-                        <v-date-picker v-model="startDate">
+                        <v-date-picker v-model="startDate" @change="setStartDates">
                           <v-spacer></v-spacer>
                           <v-btn text color="primary" @click="dateMenu = false"
                             >Cancel</v-btn
@@ -91,13 +91,13 @@
                       >
                         <template v-slot:activator="{ on }">
                           <v-text-field
-                            v-model="endDate"
+                            v-model="endDate_Et"
                             label="End Date"
                             readonly
                             v-on="on"
                           ></v-text-field>
                         </template>
-                        <v-date-picker v-model="endDate">
+                        <v-date-picker v-model="endDate" @change="setEndDates">
                           <v-spacer></v-spacer>
                           <v-btn
                             text
@@ -203,6 +203,7 @@
 </template>
 <script>
 import apiService from "../service/authonticationService";
+
 export default {
   data() {
     return {
@@ -212,7 +213,9 @@ export default {
       title: "",
       location: "",
       startDate: new Date().toISOString().substr(0, 10),
+      startDate_Et: this.parseDate(new Date().toISOString().substr(0, 10)),
       endDate: new Date().toISOString().substr(0, 10),
+      endDate_Et: this.parseDate(new Date().toISOString().substr(0, 10)),
       startDateMenu: false,
       endDateMenu: false,
       startingBirr: 0.0,
@@ -265,6 +268,17 @@ export default {
     this.apply = this.post.apply;
   },
   methods: {
+    setStartDates(){
+      this.startDate_Et = this.parseDate(this.startDate);
+    },
+    setEndDates(){
+      this.endDate_Et = this.parseDate(this.endDate);
+    },
+    parseDate(date) {
+      const Zemen = require('zemen');
+      let _date = Zemen.toEC(date);
+      return _date.format('d ፣ MMM DD ቀን YYYY E')
+    },
     async updateTender() {
       const updateResponse = await apiService.updatePostedTender(
         this.post._id,

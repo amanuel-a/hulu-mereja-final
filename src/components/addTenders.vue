@@ -1,11 +1,11 @@
 <template>
   <container>
-    <br /><br />
+    <br/><br/>
     <v-form
-      enctype="multipart/form-data"
-      class="white pt-4"
-      autocomplete="off"
-      v-model="checkValidity"
+        enctype="multipart/form-data"
+        class="white pt-4"
+        autocomplete="off"
+        v-model="checkValidity"
     >
       <v-main>
         <h1 class="text-center secondary--text">Post New Tenders her!</h1>
@@ -17,25 +17,25 @@
                   <v-layout row wrap>
                     <v-flex xs10 md11>
                       <v-text-field
-                        label="Title"
-                        v-model="title"
+                          label="Title"
+                          v-model="title"
                       ></v-text-field>
                     </v-flex>
                     <v-flex xs10 md11>
                       <v-select
-                        :items="tenderCategory"
-                        label="Category"
-                        v-model="t_category"
-                        outlined
+                          :items="tenderCategory"
+                          label="Category"
+                          v-model="t_category"
+                          outlined
                       ></v-select>
                     </v-flex>
                     <v-flex xs10 md11>
                       <v-select
-                        :rules="addressValidation"
-                        :items="state"
-                        label="Location"
-                        v-model="location"
-                        outlined
+                          :rules="addressValidation"
+                          :items="state"
+                          label="Location"
+                          v-model="location"
+                          outlined
                       ></v-select>
                     </v-flex>
                   </v-layout>
@@ -50,32 +50,34 @@
                   <v-layout row wrap>
                     <v-flex xs10 md11>
                       <v-menu
-                        ref="startDateMenu"
-                        v-model="startDateMenu"
-                        :close-on-content-click="false"
-                        :nudge-right="40"
-                        transition="scale-transition"
-                        offset-y
-                        min-width="290px"
+                          ref="startDateMenu"
+                          v-model="startDateMenu"
+                          :close-on-content-click="false"
+                          :nudge-right="40"
+                          transition="scale-transition"
+                          offset-y
+                          min-width="290px"
                       >
                         <template v-slot:activator="{ on }">
                           <v-text-field
-                            v-model="startDate"
-                            label="Start Date"
-                            readonly
-                            v-on="on"
+                              v-model="startDate_Et"
+                              label="Start Date"
+                              readonly
+                              v-on="on"
                           ></v-text-field>
                         </template>
-                        <v-date-picker v-model="startDate">
+                        <v-date-picker v-model="startDate" @change="setStartDates" >
                           <v-spacer></v-spacer>
                           <v-btn text color="primary" @click="dateMenu = false"
-                            >Cancel</v-btn
+                          >Cancel
+                          </v-btn
                           >
                           <v-btn
-                            text
-                            color="primary"
-                            @click="$refs.startDateMenu.save(startDate)"
-                            >OK</v-btn
+                              text
+                              color="primary"
+                              @click="$refs.startDateMenu.save(startDate)"
+                          >OK
+                          </v-btn
                           >
                         </v-date-picker>
                       </v-menu>
@@ -83,35 +85,37 @@
 
                     <v-flex xs10 md11>
                       <v-menu
-                        ref="endDateMenu"
-                        v-model="endDateMenu"
-                        :close-on-content-click="false"
-                        :nudge-right="40"
-                        transition="scale-transition"
-                        offset-y
-                        min-width="290px"
+                          ref="endDateMenu"
+                          v-model="endDateMenu"
+                          :close-on-content-click="false"
+                          :nudge-right="40"
+                          transition="scale-transition"
+                          offset-y
+                          min-width="290px"
                       >
                         <template v-slot:activator="{ on }">
                           <v-text-field
-                            v-model="endDate"
-                            label="End Date"
-                            readonly
-                            v-on="on"
+                              v-model="endDate_Et"
+                              label="End Date"
+                              readonly
+                              v-on="on"
                           ></v-text-field>
                         </template>
-                        <v-date-picker v-model="endDate">
+                        <v-date-picker v-model="endDate" @change="setEndDates">
                           <v-spacer></v-spacer>
                           <v-btn
-                            text
-                            color="primary"
-                            @click="enddateMenu = false"
-                            >Cancel</v-btn
+                              text
+                              color="primary"
+                              @click="enddateMenu = false"
+                          >Cancel
+                          </v-btn
                           >
                           <v-btn
-                            text
-                            color="primary"
-                            @click="$refs.endDateMenu.save(endDate)"
-                            >OK</v-btn
+                              text
+                              color="primary"
+                              @click="$refs.endDateMenu.save(endDate)"
+                          >OK
+                          </v-btn
                           >
                         </v-date-picker>
                       </v-menu>
@@ -128,8 +132,8 @@
                   <v-layout row wrap>
                     <v-flex xs10 md11>
                       <v-text-field
-                        label="Starting Birr"
-                        v-model="startingBirr"
+                          label="Starting Birr"
+                          v-model="startingBirr"
                       >
                       </v-text-field>
                     </v-flex>
@@ -144,42 +148,42 @@
         <v-row class="mx-7 my-1">
           <v-col cols="12" sm="4">
             <v-sheet rounded="lg"
-              >Essentials for bidding:
+            >Essentials for bidding:
               <v-textarea
-                label="Essential things..."
-                auto-grow
-                outlined
-                rows="10"
-                row-height="15"
-                v-model="essential"
+                  label="Essential things..."
+                  auto-grow
+                  outlined
+                  rows="10"
+                  row-height="15"
+                  v-model="essential"
               >
               </v-textarea>
             </v-sheet>
           </v-col>
           <v-col cols="12" sm="4">
             <v-sheet rounded="lg"
-              >Additonal basic information:
+            >Additonal basic information:
               <v-textarea
-                label="additional information"
-                auto-grow
-                outlined
-                rows="10"
-                row-height="15"
-                v-model="additionalInfo"
+                  label="additional information"
+                  auto-grow
+                  outlined
+                  rows="10"
+                  row-height="15"
+                  v-model="additionalInfo"
               >
               </v-textarea>
             </v-sheet>
           </v-col>
           <v-col cols="12" sm="4">
             <v-sheet rounded="lg"
-              >How to apply:
+            >How to apply:
               <v-textarea
-                label="How to apply"
-                auto-grow
-                outlined
-                rows="10"
-                row-height="15"
-                v-model="apply"
+                  label="How to apply"
+                  auto-grow
+                  outlined
+                  rows="10"
+                  row-height="15"
+                  v-model="apply"
               >
               </v-textarea>
             </v-sheet>
@@ -187,25 +191,30 @@
         </v-row>
       </v-main>
       <div class="text-center">
-        <v-btn rounded color="btncolor" @click="postTenders" dark>post </v-btn
-        ><br /><br />
+        <v-btn rounded color="btncolor" @click="postTenders" dark>post
+        </v-btn
+        >
+        <br/><br/>
       </div>
     </v-form>
-    <br />
+    <br/>
 
-    <br /><br />
+    <br/><br/>
   </container>
 </template>
 <script>
 import post from "../service/authonticationService";
+
 export default {
   data() {
     return {
       title: "",
       t_category: "",
       location: "",
-      startDate: new Date().toISOString().substr(0, 10),
-      endDate: new Date().toISOString().substr(0, 10),
+      startDate: "",
+      startDate_Et: "",
+      endDate: "",
+      endDate_Et: "",
       startDateMenu: false,
       endDateMenu: false,
       startingBirr: "",
@@ -402,22 +411,33 @@ export default {
       ],
       nameValidation: [
         (input) =>
-          /^[a-zA-Z0-9 . ]{2,500}$/.test(input) ||
-          "Invalid name. it contains a-z or A-Z, with minimum 2 characters and maximum 32 characters",
+            /^[a-zA-Z0-9 . ]{2,500}$/.test(input) ||
+            "Invalid name. it contains a-z or A-Z, with minimum 2 characters and maximum 32 characters",
       ],
       addressValidation: [
         (input) =>
-          /^[a-zA-Z ]{2,32}$/.test(input) ||
-          "Invalid name. it contains a-z or A-Z, with minimum 2 characters and maximum 32 characters",
+            /^[a-zA-Z ]{2,32}$/.test(input) ||
+            "Invalid name. it contains a-z or A-Z, with minimum 2 characters and maximum 32 characters",
       ],
       salaryValidation: [
         (input) =>
-          /^[a-zA-Z0-9 . ]{2,200}$/.test(input) ||
-          "Invalid name. it contains a-z or A-Z, with minimum 2 characters and maximum 200 characters",
+            /^[a-zA-Z0-9 . ]{2,200}$/.test(input) ||
+            "Invalid name. it contains a-z or A-Z, with minimum 2 characters and maximum 200 characters",
       ],
     };
   },
   methods: {
+    setStartDates(){
+      this.startDate_Et = this.parseDate(this.startDate);
+    },
+    setEndDates(){
+      this.endDate_Et = this.parseDate(this.endDate);
+    },
+    parseDate(date) {
+      const Zemen = require('zemen');
+      let _date = Zemen.toEC(date);
+      return _date.format('d ፣ MMM DD ቀን YYYY E')
+    },
     async postTenders() {
       if (this.checkValidity) {
         try {
@@ -433,7 +453,7 @@ export default {
             apply: this.apply,
           });
           response.data;
-          this.$router.push({ name: "tenders" });
+          this.$router.push({name: "tenders"});
           window.scrollTo(0, 0);
         } catch (err) {
           alert(err);
@@ -451,6 +471,7 @@ export default {
   width: 70%;
   margin: auto;
 }
+
 h2 {
   color: #000080;
 }

@@ -1,6 +1,8 @@
 <template>
   <div style="z-index: 999" >
-    <v-navigation-drawer v-model="drawer" app temporary dark class="secondary">
+    <v-navigation-drawer v-model="drawer" app temporary class="secondary">
+
+      <!--   V-list 0   -->
       <v-list>
         <v-list-item>
           <v-list-item-avatar>
@@ -11,9 +13,11 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
+
       <v-divider />
+      <!--   V-list 1   -->
       <v-list dense v-if="!$store.state.isUserLoggedIn">
-        <v-list-item 
+        <v-list-item
           v-for="([icon, text, link], i) in itemsOne"
           :key="i"
           link
@@ -30,6 +34,8 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
+
+      <!--   V-list 2   -->
       <v-list
         dense
         v-if="
@@ -61,6 +67,8 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
+
+      <!--   V-list 3   -->
       <v-list
         dense
         v-if="
@@ -73,7 +81,7 @@
           link
           @click="navigator({ name: link })"
         >
-          <v-list-item-icon class="justify-center " id="navlist">
+          <v-list-item-icon class="justify-center black--text" id="navlist">
             <v-icon >{{ icon }}</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
@@ -91,7 +99,9 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
+
     </v-navigation-drawer>
+
     <v-app-bar
       app
       :color="color"
@@ -117,7 +127,7 @@
        
 
         >
-          <v-btn color="black" text @click="navigator({ name: 'home' })">
+          <v-btn class="black_text" color="black" text @click="navigator({ name: 'home' })">
             <span class="text-capitalize mr-1">Home</span>
           </v-btn>
           <v-btn color="black" text @click="navigator({ name: 'jobs' })">
@@ -129,7 +139,7 @@
           <v-btn color="black" text @click="navigator({ name: 'freelancers' })">
             <span class="text-capitalize mr-1">Freelancers</span>
           </v-btn>
-          <v-btn color="black" text @click="navigator({ name: 'auth' })"v-if="!$store.state.isUserLoggedIn">
+          <v-btn color="black" text @click="navigator({ name: 'auth' })" v-if="!$store.state.isUserLoggedIn">
             <span class="text-capitalize mr-1">Sign in</span>
           </v-btn>
           <v-btn color="white"

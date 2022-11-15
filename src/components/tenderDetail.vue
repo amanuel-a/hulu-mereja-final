@@ -28,11 +28,11 @@
                 </div>
                 <div class="text-capitalize mb-4">
                   <strong class="green--text">Start Date:</strong
-                  >{{ posts.startDate.substring(0, 10) }}
+                  >{{ parseDate(posts.startDate.substring(0, 10)) }}
                 </div>
                 <div class="text-capitalize mb-4">
                   <strong class="deep-orange--text">DeadLine:</strong
-                  >{{ posts.endDate.substring(0, 10) }}
+                  >{{ parseDate(posts.startDate.substring(0, 10)) }}
                 </div>
                 <div class="text-capitalize mb-4">
                   <strong class="teal--text">startingBirr:</strong
@@ -111,10 +111,16 @@ export default {
         this.promotions.push(allPromotion[c]);
       }
     } catch (err) {
-      alert(err);
+      // alert(err);
     }
   },
-  methods: {},
+  methods: {
+    parseDate(date) {
+      const Zemen = require('zemen');
+      let _date = Zemen.toEC(date);
+      return _date.format('d ፣ MMM DD ቀን YYYY E')
+    },
+  },
 };
 </script>
 

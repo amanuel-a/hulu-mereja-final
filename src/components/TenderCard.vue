@@ -13,48 +13,70 @@
         >Bides Opening:</span
       >
       <p style="display: inline-block">
-        {{ tender.startDate.substring(0, 10) }}
+        {{ parseDate(tender.startDate.substring(0, 10)) }}
       </p>
       <br />
       <span style="font-weight: bold; color: #1f9ccd; margin-right: 10px"
         >Bides Closing:</span
       >
-      <p style="display: inline-block">{{ tender.endDate.substring(0, 10) }}</p>
+      <p style="display: inline-block">{{ parseDate(tender.endDate.substring(0, 10)) }}</p>
       <br />
     </div>
-    <div style="margin-top: 2rem; display: flex; justify-content: flex-end">
-      <v-btn
-        text
-        @click="UpdateInfo(`${tender._id}`)"
-        v-if="
+    <div style="margin-top: 2rem; display: flex; justify-content: space-between">
+      <v-chip
+        :color="isOpen ? 'green accent-4' : 'red accent-4'"
+        label
+        class="white--text ma-2"
+      >
+        {{isOpen ? "Open" : "Closed"}}
+      </v-chip>
+
+      <div style="display: flex; gap: 5px">
+        <v-btn
+            text
+            @click="UpdateInfo(`${tender._id}`)"
+            v-if="
           $store.state.isUserLoggedIn && $store.state.user.status == 'admin'
         "
-      >
-        <span class="text-capitalize primary--text">Update</span>
-      </v-btn>
-      <v-btn
-        text
-        @click="DeleteInfo(`${tender._id}`)"
-        v-if="
+        >
+          <span class="text-capitalize primary--text">Update</span>
+        </v-btn>
+        <v-btn
+            text
+            @click="DeleteInfo(`${tender._id}`)"
+            v-if="
           $store.state.isUserLoggedIn && $store.state.user.status == 'admin'
         "
-      >
-        <span class="text-capitalize primary--text">Delete</span>
-      </v-btn>
-      <v-btn depressed color="primary" @click="more(`${tender._id}`)">
-        Read more
-      </v-btn>
+        >
+          <span class="text-capitalize primary--text">Delete</span>
+        </v-btn>
+        <v-btn depressed color="primary" @click="more(`${tender._id}`)">
+          Read more
+        </v-btn>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+
 export default {
   name: "TenderCard",
   props: ["tender", "UpdateInfo", "DeleteInfo", "more"],
   mounted() {
-    console.log(this.tender);
   },
+  computed: {
+    isOpen() {
+      return new Date().valueOf() < new Date(this.tender.endDate).valueOf()
+    },
+  },
+  methods: {
+    parseDate(date) {
+      const Zemen = require('zemen');
+      let _date = Zemen.toEC(date);
+      return _date.format('d ፣ MMM DD ቀን YYYY E')
+    },
+  }
 };
 </script>
 

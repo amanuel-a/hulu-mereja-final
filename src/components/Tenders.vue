@@ -397,7 +397,7 @@ export default {
     },
     async DeleteInfo(pid) {
       var r = confirm("Will be deleted permanetly!");
-      if (r == true) {
+      if (r === true) {
         const responseDelete = await post.deleteTender(pid);
         if (!responseDelete.data.error) {
           location.reload();
@@ -408,7 +408,7 @@ export default {
       if (this.$store.state.isUserLoggedIn) {
         const response = await post.getDetailById(this.$store.state.user._id);
         const isPaid = response.data.isPaid;
-        if (this.$store.state.user.status == "admin") {
+        if (this.$store.state.user.status === "admin") {
           this.$router.push({ name: "tenderDetail", params: { id: gid } });
           window.scrollTo(0, 0);
         } else if (isPaid === "paid") {
@@ -449,12 +449,12 @@ export default {
         this.posts = [];
         const response = await post.getPostedTenders(this.pageNumber);
         allPostedJobs = response.data;
-        for (counter = 0; counter < 3; counter++) {
+        for (counter = 0; counter < 20; counter++) {
           this.posts.push(allPostedJobs[counter]);
         }
         this.loading = false;
         window.scrollTo(0, 0);
-      } else if (this.byLocation != "") {
+      } else if (this.byLocation !== "") {
         this.locationPageNumber++;
         this.posts = [];
         const responseLocation = await post.tenderLocation(

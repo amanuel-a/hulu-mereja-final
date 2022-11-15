@@ -1,37 +1,35 @@
-<!-- 
-
 <template>
   <div class="letter" style="margin-top: 8rem">
     <h1>{{ post.cname }}</h1>
     <p>{{ post.behaviour }}</p>
     <div>
       <h3 style="display: inline-block">{{ post.title }}</h3>
-      <span style="margin-left: 1rem; color: #0000ff"
-        >( {{ post.j_type }} )</span
-      >
-      <p style="white-space: pre-wrap; margin-top: 1rem">
-        {{ post.skills }}
-      </p>
-      <br />
+      <div style="margin-left: 1rem; color: #0000ff">
+        ( {{ post.j_type }} )
+      </div>
+      <p style="white-space: pre-wrap; margin-top: 1rem">{{ post.skills }}</p>
+
       <div class="text-capitalize mb-4">
-        <strong>Location:</strong> {{ post?.location }}
+        <strong>Location:</strong> {{ post.location }}
       </div>
       <div class="text-capitalize mb-4">
-        <strong>Experiences:</strong> {{ post?.experience }}
+        <strong>Experiences:</strong> {{ post.experience }}
       </div>
       <div class="text-capitalize mb-4">
-        <strong>Working Type:</strong> {{ post?.w_type }}
+        <strong>Working Type:</strong> {{ post.w_type }}
       </div>
       <div class="text-capitalize mb-4">
-        <strong>Starting Date:</strong> {{ post?.startDate?.substring(0, 10) }}
+        <strong>Starting Date:</strong> {{ post.startDate.substring(0, 10) }}
       </div>
       <div class="text-capitalize mb-4">
-        <strong>DeadLine:</strong> {{ post?.endDate?.substring(0, 10) }}
+        <strong>DeadLine:</strong> {{ post.endDate.substring(0, 10) }}
       </div>
-      <p><strong>Salary:</strong> {{ post.salary }}</p>
-      <br />
-      <p v-if="post?.apply">How to apply: {{ post.apply }}</p>
-      <br />
+      <div class="text-capitalize mb-4">
+        <strong>Salary:</strong> {{ post.salary }}
+      </div>
+      <div class="text-capitalize mb-4" v-if="post.apply">
+        <strong>How to apply:</strong> {{ post.apply }}
+      </div>
     </div>
   </div>
 </template>
@@ -73,7 +71,7 @@
 }
 </style>
 
-  <script>
+<script>
 import getpost from "../service/authonticationService";
 export default {
   data() {
@@ -99,4 +97,4 @@ export default {
   },
   methods: {},
 };
-</script> -->
+</script>
