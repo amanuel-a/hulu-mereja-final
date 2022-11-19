@@ -542,11 +542,20 @@ h1{
     .circle
       stroke-dashoffset: 0
       opacity: 1
+
+
+
+@media screen and (max-width: 1080px)
+  .heroHeader
+    margin-top: 250px
+
+
 @media screen and (max-width: 720px)
   .heroSection
     clip-path: polygon(0 0, 100% 0, 100% 98vh, 0 100%)
   .heroHeader
     font-size: 42px !important
+    margin-top: 350px
   .headerTextWrapper
     justify-content: center !important
     transform: translateY(-8rem) !important
