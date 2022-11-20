@@ -54,7 +54,7 @@
                       @click="resetPageNumber()"
                     >
                       <v-select
-                        :items="jobCategory"
+                        :items="tenderCategory"
                         label="select category"
                         dense
                         outlined
@@ -384,9 +384,6 @@ export default {
       this.windowWidth = window.innerWidth;
     },
     resetPageNumber() {
-      this.byCatagory = "";
-      this.byLocation = "";
-      this.byDate = "";
       this.catagoryPageNumber = 0;
       this.locationPageNumber = 0;
       this.datePageNumber = 0;

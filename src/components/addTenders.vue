@@ -416,7 +416,7 @@ export default {
       ],
       addressValidation: [
         (input) =>
-            /^[a-zA-Z ]{2,32}$/.test(input) ||
+            /^[a-zA-Z \W]{2,32}$/.test(input) ||
             "Invalid name. it contains a-z or A-Z, with minimum 2 characters and maximum 32 characters",
       ],
       salaryValidation: [

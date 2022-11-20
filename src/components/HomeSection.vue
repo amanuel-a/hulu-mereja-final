@@ -20,9 +20,7 @@
               <h1 class="heroDetail">
                 Be a family with us to adjust your way of life!
               </h1>
-              <p style="color:black; text-align: center;bottom:0">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque soluta sequi ratione ea iusto corporis perspiciatis tempore incidunt quae esse voluptatum magni distinctio in illo nesciunt, amet quas possimus magnam?
-              </p>
+              <p style="color:black; text-align: center;bottom:0">Whether you're a small business owner just starting out, or you're looking for a new opportunity to expand your reach, <strong>Hulumereja</strong> is the perfect resource for you. </p>
 
               <v-btn
                 rounded
@@ -245,11 +243,11 @@ export default {
           desc: "Get in is a brand owned by relief business network s.c is one of Ethiopian largest service platform provides tender (local and international) ,job and freelance networks. Founded in 2020/21 Addis Ababa, Ethiopia",
           img: "../assets/img/whoweare.png",
         },
-        // {
-        //   title: "Coverage",
-        //   desc: "we have comprehensive and reliable database",
-        //   img: "../assets/images/who.svg",
-        // },
+        {
+          title: "Coverage",
+          desc: "we have comprehensive and reliable database",
+          img: "../assets/images/who.svg",
+        },
         {
           title: "Cost effective",
           desc: "get in membership fees including access to unlimited searching, downloading available documents or tender alerts at no hidden cost. Customer support you can contact our customer care team via email, phone call to get assistant on tender /projects ,jobs and freelancers ,existing membership or any other queries error feed by you.",
@@ -258,7 +256,7 @@ export default {
         {
           title: "Customized service",
           desc: "we will customize email alerts for our customers based on preferred geographic and product/services using vocabulary codes to ensure that members only receive relevant information for their business and need.",
-          img: "../assets/img/service.png",
+          img: "../assets/img/stripe_payment_img.png",
         },
       ],
       valid: true,

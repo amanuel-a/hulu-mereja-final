@@ -63,7 +63,7 @@
                 </div>
             </li>
             <li class="timeline-inverted">
-                <div class="timeline-image"><img class="rounded-circle img-fluid" src="./../assets/img/cost.png" alt="..."></div>
+                <div class="timeline-image"><img class="rounded-circle img-fluid" src="./../assets/img/stripe_payment_img.png" alt="..."></div>
                 <div class="timeline-panel">
                     <div class="timeline-heading">
                         <h4></h4>

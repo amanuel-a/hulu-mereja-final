@@ -4,7 +4,7 @@
       <v-col cols="12" sm="4">
         <v-sheet rounded="lg">
           <v-card class="mb-2 pa-5 borderRight" color="secondary">
-            <v-toolbar color="secondary" dark flat>
+            <v-toolbar color="btncolor" dark flat>
               <v-toolbar-title class="white--text hidden-sm-only hidden-xs-only"
                 >Get</v-toolbar-title
               >
@@ -53,6 +53,7 @@
               <v-avatar size="60">
                 <img
                   :src="`https://backend.hulumereja.com/upload/images/${order.profilePicture}`"
+                  :alt="order.fullName"
               /></v-avatar>
               <v-list-item-content v-if="order.paymentType === 'tender'">
                 <span class="px-3"
@@ -68,9 +69,11 @@
               </v-list-item-content>
             </v-list-item>
           </v-card>
-          <div class="text-xs-center secondary mx-3 my-5">
+          <div class="text-xs-center btncolor mx-3 my-5">
             <v-btn text @click="feachData" block
-              ><span class="text-capitalize ">Load More</span></v-btn
+              ><span class="text-capitalize secondary--text"
+                >Load More</span
+              ></v-btn
             >
           </div>
         </v-sheet>

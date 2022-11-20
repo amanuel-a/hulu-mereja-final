@@ -23,7 +23,7 @@
               <v-stepper-content step="1">
                 <v-layout wrap>
                   <v-flex class="mx-3 my-3">
-                    <v-card class="grey py-6">
+                    <v-card class="paycolor py-6">
                       <h2 class="text-center secondary--text">
                         1 year subscription
                       </h2>
@@ -38,7 +38,7 @@
                       <p class="text-center">SMS alert</p>
                       <p class="text-center">Telegram alert</p>
                       <p class="text-center">Phone and email support</p>
-                      <div class="text-xs-center secondary">
+                      <div class="text-xs-center btncolor">
                         <v-btn text @click="e1 = 2" block
                           ><span class="text-capitalize white--text"
                             >Get Started</span
@@ -48,7 +48,7 @@
                     </v-card>
                   </v-flex>
                   <v-flex class="mx-3 my-3">
-                    <v-card class="grey py-6">
+                    <v-card class="paycolor py-6">
                       <h2 class="text-center secondary--text">
                         6 month subscription
                       </h2>
@@ -63,7 +63,7 @@
                       <p class="text-center">SMS alert</p>
                       <p class="text-center">Telegram alert</p>
                       <p class="text-center">Phone and email support</p>
-                      <div class="text-xs-center secondary">
+                      <div class="text-xs-center btncolor">
                         <v-btn text @click="e1 = 2" block
                           ><span class="text-capitalize white--text"
                             >Get Started</span
@@ -72,8 +72,8 @@
                       </div>
                     </v-card>
                   </v-flex>
-                  <v-flex class="mx-3">
-                    <v-card class="grey py-6">
+                  <v-flex class="mx-3 my-3">
+                    <v-card class="paycolor py-6">
                       <h2 class="text-center secondary--text">
                         3 month subscription
                       </h2>
@@ -88,7 +88,7 @@
                       <p class="text-center">SMS alert</p>
                       <p class="text-center">Telegram alert</p>
                       <p class="text-center">Phone and email support</p>
-                      <div class="text-xs-center secondary">
+                      <div class="text-xs-center btncolor">
                         <v-btn text @click="e1 = 2" block
                           ><span class="text-capitalize white--text"
                             >Get Started</span
@@ -106,7 +106,7 @@
                     Send us your payment receipt!
                   </h2>
                   <br /><v-flex xs10 md11
-                    ><strong>Upload:</strong>
+                     class="mx-5">
                     <input
                       type="file"
                       accept="image/*"
@@ -114,11 +114,14 @@
                       @change="selectFile"
                     /> </v-flex
                   ><br />
+                  <div class="m-3 " style="width: 100%; height: auto">
+                    <img id="receipt_img" class="mx-2" style="width: 97%; height: auto; border: 1px solid black" v-if="file" :src="previewImage" alt="Receipt Image" />
+                  </div>
                   <div class="text-center mx-12 my-3">
                     <v-btn
                       rounded
                       @click="paymentMethod"
-                      class="secondary white--text px-12"
+                      class="btncolor white--text px-12"
                       >Send</v-btn
                     >
                   </div>
@@ -143,6 +146,7 @@ import service from "../service/authonticationService";
 export default {
   data: () => ({
     file: null,
+    previewImage: null,
     message: "",
     e1: 1,
     messageRules: [

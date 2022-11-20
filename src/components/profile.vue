@@ -45,10 +45,10 @@
                           <v-select :items="titles" label="Title of your Job" v-model="title" :rules="inputValidation"></v-select>
                           <v-textarea label="Brief Description" v-model="detail" :rules="inputValidation"></v-textarea>
                           </div>
-                          <div>Profile picture:<input type="file" accept="image/*" ref="image" @change="selectFile" />
+                          <div>Profile picture: <input class="ml-3" type="file" accept="image/*" ref="image" @change="selectFile" />
                           </div>
-                          <div class="text-center mx-5 mt-2 mb-1">
-                            <v-btn rounded block @click="updateInformation" class="secondary white--text pl-15 pr-15">Update</v-btn>
+                          <div class="text-center mx-5 mt-4 mb-1">
+                            <v-btn rounded block @click="updateInformation" class="btncolor white--text pl-15 pr-15">Update</v-btn>
                           </div>
                       </v-form>
                   </v-sheet>

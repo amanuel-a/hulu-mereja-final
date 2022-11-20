@@ -11,6 +11,7 @@ export default new Vuetify({
                 primary: "#2D5976",
                 secondary: "#FFFFFF",
                 btncolor:"#6C63FF",
+                paycolor:"#00FF7F",
                 foot:"blue",
                 accent: "3D87E4",
                 detailButton:"#7B58FE",
